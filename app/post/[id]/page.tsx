@@ -5,12 +5,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-type Params = {
+type Params = Promise<{
   id: string
-}
+}> 
 
 const page = async ({ params }: { params: Params }) => {
-  const { id } = params
+  const { id } = await params
   const post = await getPost(id)
 
   return (
